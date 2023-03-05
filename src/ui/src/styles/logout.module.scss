@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "SBSansText";
+  src: url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.eot");
+  src: url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.eot?#iefix") format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.woff2") format("woff2"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.svg#SB Sans Text") format("svg");
+}
+
+.link {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #3f3479;
+  transition: all 0.3s ease 0s;
+}
