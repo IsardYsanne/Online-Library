@@ -13,6 +13,7 @@ import ru.otus.library.repository.UserRepository;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -31,6 +32,11 @@ public class StatisticsServiceImpl implements StatisticsService {
         this.statisticsRepository = statisticsRepository;
         this.userRepository = userRepository;
         this.bookRepository = bookRepository;
+    }
+
+    @Override
+    public List<ReadStatistics> findAllStatistics() {
+        return statisticsRepository.findAll();
     }
 
     @Override

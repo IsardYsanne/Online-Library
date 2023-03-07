@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import login from "../styles/login.module.scss";
 import library from "../styles/library.module.scss";
+import {useNavigate} from "react-router";
 
 const Login = (props) => {
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+
+    const route = useNavigate();
 
     const {
         onLogin,
@@ -25,6 +28,7 @@ const Login = (props) => {
             if (response.status === 200) {
                 localStorage.setItem("userAuthenticated", true.toString())
                 onLogin(userName);
+                route('/');
             }
         });
     }

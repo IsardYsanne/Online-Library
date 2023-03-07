@@ -3,6 +3,8 @@ import library from "../../styles/library.module.scss";
 import Book from "./Book.jsx";
 import CreateForm from "./CreateForm.jsx";
 import Logout from "../Logout.jsx";
+import Statistics from "../books/Statistics.jsx"
+import {useNavigate} from "react-router";
 
 const getAllBooksUrl = 'http://localhost:8080/books/show_all';
 const getAllAuthorsUrl = 'http://localhost:8080/authors/show_all';
@@ -14,6 +16,8 @@ const Library = (props) => {
         username,
         setUserName
     } = props;
+
+    const route = useNavigate();
 
     const [books, setBooks] = useState([]);
     const [authors, setAuthors] = useState([]);
@@ -40,6 +44,7 @@ const Library = (props) => {
     const showBookForm = () => {
         setShow(!show);
         setIsBookForm(!isBookForm);
+        route('/create_book');
     };
 
     const showAuthorForm = () => {
@@ -69,13 +74,18 @@ const Library = (props) => {
             :
             <div className={library.container}>
                 <nav className={library.menu}>
-                    <div className={library.link}>
-                        Вы вошли как: <span>{username}</span>
-                    </div>
-                    <Logout
-                        text={"Выйти"}
-                        setUserName={setUserName}
+                    <Statistics
+                        text={"Посмотреть статистику"}
                     />
+                    <div className={library.nav_block}>
+                        <div className={library.link}>
+                            Вы вошли как: <span>{username}</span>
+                        </div>
+                        <Logout
+                            text={"Выйти"}
+                            setUserName={setUserName}
+                        />
+                    </div>
                 </nav>
                 <div className={library.allBooks_container}>
                     {

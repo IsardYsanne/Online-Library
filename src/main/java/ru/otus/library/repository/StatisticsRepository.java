@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface StatisticsRepository extends CrudRepository<ReadStatistics, Long> {
 
+    List<ReadStatistics> findAll();
+
     ReadStatistics findByUserAndBook(User user, Book book);
 
     List<ReadStatistics> findAllByBook(Book book);

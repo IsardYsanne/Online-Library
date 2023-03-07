@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.otus.library.dto.ShowStatisticsDto;
 import ru.otus.library.dto.StatisticsDto;
+import ru.otus.library.mapper.BookMapper;
 import ru.otus.library.service.StatisticsService;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -22,8 +26,16 @@ public class StatisticsController {
 
     private final StatisticsService statisticsService;
 
-    public StatisticsController(StatisticsService statisticsService) {
+    private final BookMapper bookMapper;
+
+    public StatisticsController(StatisticsService statisticsService, BookMapper bookMapper) {
         this.statisticsService = statisticsService;
+        this.bookMapper = bookMapper;
+    }
+
+    @GetMapping("/show_all")
+    public ResponseEntity<List<ShowStatisticsDto>> showAllStatistics() {
+        return ResponseEntity.ok(bookMapper.statisticsListToDto(statisticsService.findAllStatistics()));
     }
 
     @PostMapping("/save")

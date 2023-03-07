@@ -3,12 +3,18 @@ package ru.otus.library.mapper;
 import org.springframework.stereotype.Component;
 import ru.otus.library.dto.BookDto;
 import ru.otus.library.dto.CommentDto;
+import ru.otus.library.dto.ShowStatisticsDto;
 import ru.otus.library.model.entity.Author;
 import ru.otus.library.model.entity.Book;
 import ru.otus.library.model.entity.Comment;
 import ru.otus.library.model.entity.Genre;
+import ru.otus.library.model.entity.ReadStatistics;
+import ru.otus.library.model.entity.User;
+import ru.otus.library.repository.BookRepository;
+import ru.otus.library.repository.UserRepository;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +24,15 @@ import java.util.stream.Collectors;
 
 @Component
 public class BookMapper {
+
+    private final BookRepository bookRepository;
+
+    private final UserRepository userRepository;
+
+    public BookMapper(BookRepository bookRepository, UserRepository userRepository) {
+        this.bookRepository = bookRepository;
+        this.userRepository = userRepository;
+    }
 
     public Book dtoToBook(BookDto bookDto) {
         final Set<Author> authors = authorsToSet(bookDto.getAuthors());
@@ -51,8 +66,27 @@ public class BookMapper {
         result.setComments(commentDto);
         result.setBase64URL(book.getImage());
         result.setLink(book.getBookPath());
-        //result.setIsBookRead(book.getIsBookRead());
         return result;
+    }
+
+    public ShowStatisticsDto statisticsToDto(ReadStatistics readStatistics) {
+        final ShowStatisticsDto statisticsDto = new ShowStatisticsDto();
+        final User user = userRepository.findById(readStatistics.getUser().getId()).orElse(null);
+        final Book book = bookRepository.findById(readStatistics.getBook().getId()).orElse(null);
+        statisticsDto.setUserName(user.getUserName());
+        statisticsDto.setTitle(book.getTitle());
+        statisticsDto.setReadDate(readStatistics.getReadDate());
+        return statisticsDto;
+    }
+
+    public List<ShowStatisticsDto> statisticsListToDto(List<ReadStatistics> statistics) {
+        final List<ShowStatisticsDto> showStatisticsDtos = new ArrayList<>();
+        for (ReadStatistics statistic : statistics) {
+            final ShowStatisticsDto statisticsDto = statisticsToDto(statistic);
+            showStatisticsDtos.add(statisticsDto);
+        }
+
+        return showStatisticsDtos;
     }
 
     public List<BookDto> bookListToDto(List<Book> books) {

@@ -22,13 +22,17 @@ html {
 
 .menu {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   font-size: 20px;
   padding: 30px;
   background-color: #d0d0e5;
    span {
      font-weight: bold;
    }
+}
+
+.nav_block {
+  display: flex;
 }
 
 .allBooks_container {

@@ -12,6 +12,7 @@ spring-shell.log
 /src/ui/dist
 /src/ui/node_modules
 /logs
+/out
 ### STS ###
 .apt_generated
 .classpath

@@ -46,6 +46,10 @@ const Book = (props) => {
             .then(statistic => setStatistics(statistic));
     }, []);
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     const editBook = (title, book) => {
         fetch(editBookUrl, {
             method: 'put',
@@ -73,7 +77,9 @@ const Book = (props) => {
         if (window.confirm("Вы действительно хотите удалить эту книгу?")) {
             fetch(removeBookUrl + '?id=' + id, {
                 method: 'delete'
-            }).then(() => setStatus('Delete successful'));
+            }).then((response) => {
+                setStatus(response.data)
+            }).then(() =>  window.location.reload(false));
         }
     };
 
@@ -91,7 +97,7 @@ const Book = (props) => {
                     base64URL: book.base64URL,
                     isDeleteImage
                 })
-            });
+            }).then(() => window.location.reload(false));
         }
     };
 
@@ -166,14 +172,16 @@ const Book = (props) => {
                     title: title,
                     isBookRead: true
                 })
-            });
+            }).then(() => window.location.reload(false));
         }
     }
 
     return (
         showForm ?
             // Форма изменения книги.
-            <form className={styles.formWrapper}>
+            <form className={styles.formWrapper}
+                  onSubmit={(e) => handleSubmit(e)}
+            >
                 <label htmlFor={1} className={styles.formLabel}>
                     Введите название книги
                 </label>
