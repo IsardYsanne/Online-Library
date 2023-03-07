@@ -1,0 +1,190 @@
+@font-face {
+  font-family: "SBSansText";
+  src: url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.eot");
+  src: url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.eot?#iefix") format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.woff2") format("woff2"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/c68e21ad1a10803b1ef491fd0392b067.svg#SB Sans Text") format("svg");
+}
+
+.book_wrapper {
+  flex: 0 1 25%;
+}
+
+.book_column {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: 'SBSansText', sans-serif;
+}
+
+.book_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.book_authors {
+  font-weight: bold;
+}
+
+.book_genre {
+
+}
+
+.book_menu {
+  display: flex;
+}
+
+.book_edit {
+
+}
+
+.book_remove {
+
+}
+
+.book_read {
+  display: flex;
+  align-self: center;
+}
+
+.edit_icon {
+  font-size: 30px;
+  color: #2c753f;
+  cursor: pointer;
+}
+
+.edit_icon:hover {
+  transition: all 0.3s ease 0s;
+  color: #12321a;
+}
+
+.remove_icon {
+  font-size: 30px;
+  color: #b33046;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.remove_icon:hover {
+  transition: all 0.3s ease 0s;
+  color: #72101f;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 20px;
+  background-color: #ccc6d2;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.formLabel {
+  padding: 20px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1b1b41;
+}
+
+.inputForm {
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.btn_container {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.btnSubmit {
+  cursor: pointer;
+  width: 100px;
+  border: none;
+  background-color: #5da573;
+  color: white;
+  font-size: 16px;
+  border-radius: 15px;
+  font-weight: bold;
+  height: 40px;
+}
+
+.btnSubmit:disabled {
+  pointer-events: none;
+  background-color: #8f8f8f;
+  color: white;
+}
+
+.btnExit {
+  cursor: pointer;
+  width: 100px;
+  border: none;
+  background-color: #601732;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+.image_container {
+  display: flex;
+  object-fit: contain;
+  align-self: center;
+  img {
+    cursor: pointer;
+    width: 120px;
+    height: 150px;
+    border-radius: 15px;
+  }
+}
+
+.remove_image_icon {
+  font-size: 20px;
+  color: #b33046;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.remove_image_icon:hover {
+  transition: all 0.3s ease 0s;
+  color: #72101f;
+}
+
+.read_icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #2b2c8d;
+  margin-left: 10px;
+}
+
+.read_icon:hover {
+  transition: all 0.3s ease 0s;
+  color: #14145f;
+}
+
+.done_icon {
+  font-size: 30px;
+  margin-left: 10px;
+  color: #007012;
+  margin-top: 2px;
+  pointer-events: none;
+}
+
+.not_done_icon {
+  font-size: 30px;
+  margin-left: 10px;
+  color: #777777;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.not_done_icon:hover {
+  transition: all 0.3s ease 0s;
+  color: #4f4f4f;
+}
